@@ -1,11 +1,9 @@
-package com.aaron.api;
+package com.aaron.web;
 
 import com.aaron.exception.BadRequestException;
 import com.aaron.exception.NotFoundException;
 import com.aaron.pojo.Result;
-import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

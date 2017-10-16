@@ -1,4 +1,4 @@
-package com.aaron.api;
+package com.aaron.web;
 
 import com.aaron.pojo.Result;
 import com.aaron.pojo.User;
@@ -18,18 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "USER_USERS", description = "用户-用户管理")
 @RestController
 @RequestMapping("/users")
-public interface UserController {
+public class UserController {
+    @Autowired
+    private UserService userService;
+
     @ApiOperation("获取用户信息")
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public Result<User> get(
             @ApiParam(value = "用户ID", required = true)
-            @PathVariable Long userId);
+            @PathVariable Long userId) {
+        return new Result<User>(userService.get(userId));
+    }
 
     @ApiOperation("删除用户信息")
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
     public Result<Boolean> delete(
             @ApiParam(value = "用户ID", required = true)
-            @PathVariable Long userId);
+            @PathVariable Long userId) {
+        userService.delete(userId);
+        return new Result<Boolean>(true);
+    }
 
     @ApiOperation("修改用户信息")
     @RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
@@ -37,5 +45,8 @@ public interface UserController {
             @ApiParam(value = "用户ID", required = true)
             @PathVariable Long userId,
             @ApiParam(value = "用户名称", required = true)
-            String name);
+            String name) {
+        userService.update(userId, name);
+        return new Result<Boolean>(true);
+    }
 }
