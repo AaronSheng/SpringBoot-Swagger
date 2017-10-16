@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: SpringBoot-Swagger
+
+server:
+  port: 8080
+  context-path: /api
+
+swagger:
+  title: API文档
+  description: API文档
+  version: 1.0
+  termsOfServiceUrl: http://baidu.com/
+  contact: Aaron
+  license: Aaron
+  licenseUrl: http://baidu.com/
+  basePackage: com.aaron.web
